@@ -23,7 +23,7 @@ final class WebDumper extends AbstractDumper
     public function dump($var)
     {
         $string = $this->prettyPrint($this->resolve($var));
-        $string = sprintf("<div class='dump_bg'>%s</div>");
+        $string = sprintf("<div class='dump_bg'>%s</div>", $string);
 
         if (!$this->cssDumped) {
             $string = $this->css.$string;
