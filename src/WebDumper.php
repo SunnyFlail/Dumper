@@ -90,12 +90,14 @@ final class WebDumper extends AbstractDumper
                 "adler32",
                 "md4"
             ];
-            $css = file_get_contents("Assets/style.css");
+            $hash = array_intersect($fastHashes, $hashes)[0] ?? "md4";
+
+            $css = file_get_contents(__DIR__."Assets/style.css");
             $css = sprintf("<style>%s</style>", $css);
-            $arrTemplate = file_get_contents("Assets/Template_Array.html");
+            $arrTemplate = file_get_contents(__DIR__."Assets/Template_Array.html");
 
             self::$SINGLETON = new self(
-                array_intersect($hashes, $fastHashes)[0],
+                $hash,
                 $css,
                 $arrTemplate
             );
