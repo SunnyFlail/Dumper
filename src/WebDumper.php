@@ -82,6 +82,7 @@ final class WebDumper extends AbstractDumper
     public static function get(): self
     {
         if (is_null(self::$SINGLETON)) {
+            $dirAssets = __DIR__."/Assets/";
             $hashes = hash_algos();
             $fastHashes = [
                 "crc32b",
@@ -92,9 +93,9 @@ final class WebDumper extends AbstractDumper
             ];
             $hash = array_intersect($fastHashes, $hashes)[0] ?? "md4";
 
-            $css = file_get_contents(__DIR__."Assets/style.css");
+            $css = file_get_contents($dirAssets."style.css");
             $css = sprintf("<style>%s</style>", $css);
-            $arrTemplate = file_get_contents(__DIR__."Assets/Template_Array.html");
+            $arrTemplate = file_get_contents($dirAssets."Template_Array.html");
 
             self::$SINGLETON = new self(
                 $hash,
