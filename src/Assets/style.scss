@@ -1,0 +1,42 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+.dump{
+    &_bg {//background
+        background: #232322;
+        padding: 10px 20px;
+        color: #f9f9f9;
+        width: fit-content;
+    }
+    &_cx, &_ib {//checkbox, inner body
+        display: none;
+    }
+    &_cx {//checkbox
+        &:checked + .dump_ib {
+            display: block;
+        }
+    }
+    &_wr {
+        position: relative;
+    }
+    &_ib {
+        position: relative;
+        & div {
+            position: relative;
+            left: 10px;
+        }
+    }
+    &_t, &_v {
+        font-weight: 700;
+    }
+    &_t {
+        color: cyan;
+        &::after {
+            content: ":";
+        }
+    }
+    &_v {
+        color: firebrick;
+    }
+}

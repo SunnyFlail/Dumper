@@ -1,0 +1,29 @@
+*, *::after, *::before {
+  box-sizing: border-box; }
+
+.dump_bg {
+  background: #232322;
+  padding: 10px 20px;
+  color: #f9f9f9;
+  width: fit-content; }
+.dump_cx, .dump_ib {
+  display: none; }
+.dump_cx:checked + .dump_ib {
+  display: block; }
+.dump_wr {
+  position: relative; }
+.dump_ib {
+  position: relative; }
+  .dump_ib div {
+    position: relative;
+    left: 10px; }
+.dump_t, .dump_v {
+  font-weight: 700; }
+.dump_t {
+  color: cyan; }
+  .dump_t::after {
+    content: ":"; }
+.dump_v {
+  color: firebrick; }
+
+/*# sourceMappingURL=style.css.map */
