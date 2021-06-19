@@ -12,7 +12,7 @@ final class WebDumper extends AbstractDumper
     private bool $cssDumped;
 
     public function __construct(
-        private string $hashName,
+        private string $hash,
         private string $css,
         private string $arrTemplate
     )
