@@ -81,7 +81,7 @@ final class WebDumper extends AbstractDumper
 
     public static function get(): self
     {
-        if (!is_null(self::$SINGLETON)) {
+        if (is_null(self::$SINGLETON)) {
             $hashes = hash_algos();
             $fastHashes = [
                 "crc32b",
