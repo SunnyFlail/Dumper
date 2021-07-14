@@ -6,6 +6,7 @@ use ArrayIterator;
 use SunnyFlail\Dumper\Data\ArrayData;
 use SunnyFlail\Dumper\Data\IArrayFieldData;
 use SunnyFlail\Dumper\Data\IData;
+use SunnyFlail\Dumper\Data\IPropertyData;
 
 final class WebDumper extends AbstractDumper
 {
@@ -53,6 +54,11 @@ final class WebDumper extends AbstractDumper
             if ($value instanceof IArrayFieldData) {
                 $key = $value->getKey();
                 $key = '<span class="dump_ak">' . $key . "</span>";
+            }
+
+            if ($value instanceof IPropertyData) {
+                $key = $value->getPropertyName();
+                $key = '<span class="dump_pn">' . $key . "</span>";
             }
 
             $string .= "<div class='dump_bo'>";

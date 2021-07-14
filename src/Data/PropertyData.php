@@ -2,7 +2,7 @@
 
 namespace SunnyFlail\Dumper\Data;
 
-class PropertyData implements IData
+class PropertyData implements IPropertyData
 {
     
     use DataTrait;
@@ -16,6 +16,11 @@ class PropertyData implements IData
     )
     {
         $this->type = $name;
+    }
+
+    public function getPropertyName(): string
+    {
+        return $this->name;
     }
 
 }
