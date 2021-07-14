@@ -3,6 +3,8 @@
 namespace SunnyFlail\Dumper;
 
 use ArrayIterator;
+use SunnyFlail\Dumper\Data\ArrayData;
+use SunnyFlail\Dumper\Data\IArrayFieldData;
 use SunnyFlail\Dumper\Data\IData;
 
 final class WebDumper extends AbstractDumper
@@ -48,19 +50,30 @@ final class WebDumper extends AbstractDumper
             $key = $iterator->key();
             $value = $iterator->current();
 
+            if ($value instanceof IArrayFieldData) {
+                $key = $value->getKey();
+                $key = '<span class="dump_ak">' . $key . "</span>";
+            }
+
             $string .= "<div class='dump_bo'>";
             if (is_array($value)) {
+                $value = $this->prettyPrint($value);
+
                 $id = $this->generateRandomName();
 
                 $string .= sprintf(
                     $this->arrTemplate,
                     $id,
                     $key,
-                    $this->prettyPrint($value)
+                    $value
                 );
             } else {
+                if ($value instanceof IData || is_array($value)) {
+                    $value = $this->prettyPrint($value);
+                }
+
                 $string .= "<div class='dump_l'>
-                                <span class='dump_t'>$key:</span>
+                                <span class='dump_t'>$key</span>
                                 <span class='dump_v'>$value</span>
                             </div>";
             }
@@ -78,7 +91,6 @@ final class WebDumper extends AbstractDumper
     {
         return hash($this->hash, random_bytes(64));
     }
-
     public static function get(): self
     {
         if (is_null(self::$SINGLETON)) {

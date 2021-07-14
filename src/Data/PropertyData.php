@@ -8,14 +8,14 @@ class PropertyData implements IData
     use DataTrait;
 
     public function __construct(
-        protected array $propertyTypes,
-        protected string $propertyName,
-        protected string $propertyModifier,
-        protected bool $propertyStatic,
+        protected array $types,
+        protected string $name,
+        protected string $modifier,
+        protected bool $static,
         protected IData $value
     )
     {
-        $this->type = "property__$propertyName";
+        $this->type = $name;
     }
 
 }

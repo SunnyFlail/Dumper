@@ -2,17 +2,22 @@
 
 namespace SunnyFlail\Dumper\Data;
 
-class ArrayFieldData implements IData
+class ArrayFieldData implements IArrayFieldData
 {
 
     use DataTrait;
 
     public function __construct(
         protected string $key,
-        protected IData $valueData
+        protected IData $value
     )
     {
-        $this->type = "field__$key";        
+        $this->type = $key;        
+    }
+
+    public function getKey(): string
+    {
+        return $this->key;
     }
 
 }

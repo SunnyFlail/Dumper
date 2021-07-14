@@ -18,7 +18,13 @@ trait DataTrait
 
     public function jsonSerialize()
     {
+        return $this->getData();
+    }
+
+    public function getData()
+    {
         $reflection = new ReflectionObject($this);
+
         return [$this->type => array_reduce(
                 $reflection->getProperties(),
                 function (array $carry, \ReflectionProperty $current) {
@@ -31,11 +37,6 @@ trait DataTrait
                 []
             )
         ];
-    }
-
-    public function __toString(): string
-    {
-        return json_encode($this, JSON_PRETTY_PRINT);
     }
 
 }

@@ -7,7 +7,7 @@
         background: #232322;
         padding: 10px 20px;
         color: #f9f9f9;
-        width: fit-content;
+        min-width: fit-content;
     }
     &_cx, &_ib {//checkbox, inner body
         display: none;
@@ -38,5 +38,8 @@
     }
     &_v {
         color: firebrick;
+    }
+    &_ak {
+        color: yellow;
     }
 }
