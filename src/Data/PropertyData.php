@@ -11,7 +11,7 @@ class PropertyData implements IPropertyData
         protected array $types,
         protected string $name,
         protected string $modifier,
-        protected bool $static,
+        protected string $static,
         protected string $initialised,
         protected IData|string $value
     ) {

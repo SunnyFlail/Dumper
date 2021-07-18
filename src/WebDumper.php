@@ -61,6 +61,10 @@ final class WebDumper extends AbstractDumper
                 $key = '<span class="dump_pn">' . $key . "</span>";
             }
 
+            if (is_bool($value)) {
+                $value = $value ? 'true' : 'false';
+            }
+
             $string .= "<div class='dump_bo'>";
             if (is_array($value)) {
                 $value = $this->prettyPrint($value);
