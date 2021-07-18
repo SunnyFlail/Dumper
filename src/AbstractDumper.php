@@ -6,6 +6,7 @@ use ReflectionObject;
 use ReflectionProperty;
 use SunnyFlail\Dumper\Data\ArrayData;
 use SunnyFlail\Dumper\Data\ArrayFieldData;
+use SunnyFlail\Dumper\Data\BooleanData;
 use SunnyFlail\Dumper\Data\IData;
 use SunnyFlail\Dumper\Data\ObjectData;
 use SunnyFlail\Dumper\Data\PropertyData;
