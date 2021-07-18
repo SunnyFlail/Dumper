@@ -13,9 +13,9 @@ class BooleanData implements IData
         mixed $value
     ) {
         if ($value) {
-            $value = 'true';
+            $this->value = 'true';
         } else {
-            $value = 'false';
+            $this->value = 'false';
         }
 
         $this->type = 'boolean';
