@@ -68,15 +68,19 @@ abstract class AbstractDumper
                         : ($property->isProtected() ? "protected"
                         : ""));
         $propertyStatic = $property->isStatic();
-        
-        $value = $property->getValue($object);
-        $value = $this->resolve($value);
+
+        $value = null;
+        if ($initialised = $property->isInitialized()) {
+            $value = $property->getValue($object);
+            $value = $this->resolve($value);
+        }
 
         return new PropertyData(
             $propertyTypes,
             $propertyName,
             $propertyModifier,
             $propertyStatic,
+            $initialised,
             $value
         );
     }
