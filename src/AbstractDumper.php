@@ -69,10 +69,13 @@ abstract class AbstractDumper
                         : ""));
         $propertyStatic = $property->isStatic();
 
-        $value = null;
         if ($initialised = $property->isInitialized($object)) {
             $value = $property->getValue($object);
             $value = $this->resolve($value);
+            $initialised = 'true';
+        } else {
+            $value = 'uninitialised';
+            $initialised = 'false';
         }
 
         return new PropertyData(

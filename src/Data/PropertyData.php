@@ -12,8 +12,8 @@ class PropertyData implements IPropertyData
         protected string $name,
         protected string $modifier,
         protected bool $static,
-        protected bool $initialised,
-        protected ?IData $value
+        protected string $initialised,
+        protected IData|string $value
     ) {
         $this->type = $name;
     }
