@@ -28,6 +28,9 @@ abstract class AbstractDumper
             case "array":
                 $data = $this->resolveArray($var);
                 break;
+            case "boolean":
+                $data = $this->resolveBoolean($var);
+                break;
             default: 
                 $data = $this->resolveVariable($var, $type);
         }
@@ -98,6 +101,11 @@ abstract class AbstractDumper
     protected function resolveVariable($var, string $type): VariableData
     {
         return new VariableData($type, $var);
+    }
+
+    protected function resolveBoolean($var): BooleanData
+    {
+        return new BooleanData($var);
     }
 
     protected function saturateArray($var, int $times): array
